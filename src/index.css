@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-border: rgba(0, 0, 0, 0.10);
+    --color-accent: #111111;
+    --color-accent-2: #525252;
+
+    /* Typography scale — responsive via clamp */
+    --text-hero: clamp(2rem, 5vw, 3.75rem);
+    --text-h2: clamp(1.75rem, 4vw, 2.5rem);
+    --text-h3: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #111111;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Do NOT use overflow-x: hidden here — fix layout instead */
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.6;
+  }
+
+  /* Prevent horizontal overflow at the root */
+  #root {
+    overflow-x: clip;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+
+/* ── Glass morphism ───────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* ── Text gradients ───────────────────────────────────────────────────────── */
+.neon-text {
+  background: linear-gradient(135deg, #000000 0%, #404040 50%, #111111 100%);
+  background-size: 160% 160%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientX 5s ease infinite;
+}
+
+.neon-text-purple {
+  background: linear-gradient(135deg, #111111, #525252);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── 3D Card hover ────────────────────────────────────────────────────────── */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* ── Tech card hover ──────────────────────────────────────────────────────── */
+.tech-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+  border-color: rgba(0,0,0,0.18) !important;
+}
+
+/* ── Gradient border ──────────────────────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background: #ffffff;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.20), rgba(82,82,82,0.10), rgba(0,0,0,0.04));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Animated background grid ────────────────────────────────────────────── */
+.bg-grid {
+  background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Hero gradient overlay ────────────────────────────────────────────────── */
+.bg-hero-gradient {
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0.9) 100%);
+}
+
+/* ── Tech pill ────────────────────────────────────────────────────────────── */
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  background: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: #262626;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tech-pill:hover {
+  background: #ebebeb;
+  border-color: rgba(0,0,0,0.22);
+  color: #000;
+}
+
+/* ── Section fade-in ──────────────────────────────────────────────────────── */
+.section-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Animated gradient button ─────────────────────────────────────────────── */
+.btn-gradient {
+  background: #111111;
+  color: #ffffff !important;
+  transition: all 0.25s ease;
+}
+
+.btn-gradient:hover {
+  background: #000000;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transform: translateY(-1px);
+}
+
+.btn-gradient * {
+  color: #ffffff !important;
+}
+
+/* ── Floating orbs ────────────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  background-color: #000000 !important;
+  opacity: 0.025;
+}
+
+/* ── Particle canvas ──────────────────────────────────────────────────────── */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+@keyframes gradientX {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-20px) translateX(10px); }
+  66% { transform: translateY(10px) translateX(-8px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-15px) translateX(12px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+/* ── Mobile overrides ─────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .card-3d:hover, .tech-card:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Ensure no horizontal overflow on mobile */
+  section {
+    overflow-x: clip;
+  }
+}
+
+/* ─── GLOBAL CONTRAST SYSTEM ────────────────────────────────────────────────
+   Enforce readable contrast hierarchy throughout the white-background
+   portfolio. These rules apply ONLY to .portfolio-shell (main content)
+   and NOT to modals or dark code blocks that have their own surfaces.
+────────────────────────────────────────────────────────────────────────────── */
+
+/* Primary text — near black */
+.portfolio-shell .text-white  { color: #111111 !important; }
+.portfolio-shell .text-black  { color: #111111 !important; }
+
+/* Secondary text */
+.portfolio-shell .text-slate-300  { color: #404040 !important; }
+.portfolio-shell .text-slate-400  { color: #525252 !important; }
+
+/* Muted text — still readable (min WCAG AA on white = 4.5:1 → #767676) */
+.portfolio-shell .text-slate-500  { color: #6b7280 !important; }
+.portfolio-shell .text-slate-600  { color: #737373 !important; }
+
+/* Neutral Tailwind shims */
+.portfolio-shell .text-neutral-300 { color: #404040 !important; }
+.portfolio-shell .text-neutral-400 { color: #525252 !important; }
+.portfolio-shell .text-neutral-500 { color: #6b7280 !important; }
+.portfolio-shell .text-neutral-600 { color: #525252 !important; }
+.portfolio-shell .text-neutral-700 { color: #404040 !important; }
+
+/* Colored accent text — ensure they hit AA contrast on white */
+.portfolio-shell .text-violet-300  { color: #4c1d95 !important; }
+.portfolio-shell .text-violet-400  { color: #5b21b6 !important; }
+.portfolio-shell .text-cyan-300    { color: #0e7490 !important; }
+.portfolio-shell .text-cyan-400    { color: #0369a1 !important; }
+.portfolio-shell .text-emerald-300 { color: #065f46 !important; }
+.portfolio-shell .text-emerald-400 { color: #047857 !important; }
+.portfolio-shell .text-amber-300   { color: #92400e !important; }
+.portfolio-shell .text-amber-400   { color: #78350f !important; }
+
+/* Buttons and their children ALWAYS white text */
+.portfolio-shell .btn-gradient,
+.portfolio-shell .btn-gradient *  { color: #ffffff !important; }
+
+/* Light backgrounds */
+.portfolio-shell .bg-white\/3,
+.portfolio-shell .bg-white\/5     { background-color: #f9f9f9 !important; }
+
+/* Overlays stay dark */
+.portfolio-shell .bg-black\/70    { background-color: rgba(0, 0, 0, 0.60) !important; }
+.portfolio-shell .bg-black\/60    { background-color: rgba(0, 0, 0, 0.55) !important; }
+
+/* Semantic colored backgrounds → near-black on white-bg sections */
+.portfolio-shell :is(.bg-violet-600, .bg-blue-600, .bg-cyan-500, .bg-emerald-500) {
+  background-color: #111111 !important;
+}
+.portfolio-shell :is(.bg-violet-600, .bg-blue-600, .bg-cyan-500, .bg-emerald-500) * {
+  color: #ffffff !important;
+}
+
+/* ── Code blocks always keep dark surface + light text ───────────────────── */
+.portfolio-shell .bg-gray-950 { background-color: #0f0f0f !important; }
+.portfolio-shell .bg-gray-950 * { color: #d4d4d4 !important; }
+
+/* ── Modal (.glass-strong) renders on near-opaque white ───────────────────── */
+.portfolio-shell .glass-strong .text-white    { color: #111111 !important; }
+.portfolio-shell .glass-strong .text-black    { color: #111111 !important; }
+.portfolio-shell .glass-strong .text-slate-300 { color: #404040 !important; }
+.portfolio-shell .glass-strong .text-slate-400 { color: #525252 !important; }
+.portfolio-shell .glass-strong .text-slate-500 { color: #6b7280 !important; }
+.portfolio-shell .glass-strong .text-slate-600 { color: #737373 !important; }
+.portfolio-shell .glass-strong .text-neutral-400 { color: #525252 !important; }
+.portfolio-shell .glass-strong .text-neutral-500 { color: #6b7280 !important; }
+.portfolio-shell .glass-strong .text-neutral-600 { color: #525252 !important; }
+.portfolio-shell .glass-strong .text-violet-300 { color: #4c1d95 !important; }
+.portfolio-shell .glass-strong .text-violet-400 { color: #5b21b6 !important; }
+.portfolio-shell .glass-strong .text-emerald-400 { color: #047857 !important; }
+.portfolio-shell .glass-strong .text-cyan-300    { color: #0e7490 !important; }
+.portfolio-shell .glass-strong .text-amber-300   { color: #92400e !important; }
+.portfolio-shell .glass-strong .btn-gradient,
+.portfolio-shell .glass-strong .btn-gradient *   { color: #ffffff !important; }
+/* Code blocks inside modal */
+.portfolio-shell .glass-strong .bg-gray-950 { background-color: #0f0f0f !important; }
+.portfolio-shell .glass-strong .bg-gray-950 * { color: #d4d4d4 !important; }
