@@ -6,6 +6,15 @@ interface FooterProps {
   onOpenResume: () => void;
 }
 
+const footerNavLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Stack', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+];
+
 export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -17,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
         <div className="flex items-center gap-3">
           <div className="relative size-9 rounded-xl overflow-hidden">
             <div className="absolute inset-0 btn-gradient" />
-            <div className="relative flex items-center justify-center h-full font-mono font-extrabold text-white text-sm">SB</div>
+            <div className="brand-mark relative flex items-center justify-center h-full font-mono font-extrabold text-sm">SB</div>
           </div>
           <div>
             <div className="text-sm font-extrabold text-black tracking-tight">SRIKANTH B</div>
@@ -26,33 +35,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
         </div>
 
         {/* Nav links */}
-        <nav className="flex flex-wrap justify-center gap-6 text-xs font-mono font-medium text-neutral-500" aria-label="Footer navigation">
-          {['Home', 'About', 'Stack', 'Projects', 'Experience', 'Contact'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-black transition-colors">
-              {item}
+        <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-mono font-medium text-neutral-500" aria-label="Footer navigation">
+          {footerNavLinks.map(item => (
+            <a key={item.label} href={item.href} className="whitespace-nowrap hover:text-black transition-colors">
+              {item.label}
             </a>
           ))}
         </nav>
 
         {/* Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs font-mono font-medium text-neutral-500">
+        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-mono font-medium text-neutral-500">
           <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer"
-            className="hover:text-black transition-colors flex items-center gap-1.5">
+            className="whitespace-nowrap hover:text-black transition-colors flex items-center gap-1.5">
             <Github className="size-3.5" /> GitHub
           </a>
           <a href={`mailto:${PERSONAL_INFO.email}`}
-            className="hover:text-black transition-colors flex items-center gap-1.5">
+            className="whitespace-nowrap hover:text-black transition-colors flex items-center gap-1.5">
             <Mail className="size-3.5" /> Email
           </a>
           <button onClick={onOpenResume}
-            className="hover:text-black transition-colors flex items-center gap-1.5">
+            className="whitespace-nowrap hover:text-black transition-colors flex items-center gap-1.5">
             <FileText className="size-3.5" /> Resume
           </button>
         </div>
 
         {/* Copyright */}
         <div className="flex items-center gap-4">
-          <span className="text-[11px] text-neutral-400 font-mono">© {new Date().getFullYear()} Srikanth B</span>
+          <span className="text-[11px] text-neutral-400 font-mono whitespace-nowrap">© {new Date().getFullYear()} Srikanth B</span>
           <button onClick={scrollToTop} aria-label="Scroll to top"
             className="p-2 rounded-lg glass border border-black/10 hover:border-black/22 text-neutral-400 hover:text-black transition-colors">
             <ArrowUp className="size-4" />
