@@ -32,16 +32,25 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
     }
     setErrors({});
     setIsSubmitting(true);
-    const subject = encodeURIComponent(formData.subject || `Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    const whatsappNumber = PERSONAL_INFO.phone.replace(/\D/g, '');
+    const whatsappMessage = encodeURIComponent(
+      [
+        'Portfolio Contact',
+        '',
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        formData.subject.trim() ? `Subject: ${formData.subject}` : '',
+        '',
+        formData.message,
+      ].filter(Boolean).join('\n')
     );
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      window.open(`mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`, '_blank');
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank', 'noopener,noreferrer');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 400);
+    }, 250);
   };
 
   const inputClass = (field: string) =>
@@ -148,7 +157,7 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
                 <div className="bg-emerald-500/10 p-6 rounded-xl border border-emerald-500/22 text-center space-y-3">
                   <CheckCircle2 className="size-10 text-emerald-600 mx-auto" />
                   <h4 className="text-base font-bold text-black">Message Sent!</h4>
-                  <p className="text-xs text-neutral-600 max-w-md mx-auto">Your email client has been opened. Srikanth B will respond shortly.</p>
+                  <p className="text-xs text-neutral-600 max-w-md mx-auto">WhatsApp has been opened with your message. Srikanth B will respond shortly.</p>
                   <button onClick={() => setSubmitted(false)}
                     className="px-4 py-2 rounded-lg bg-emerald-600/15 border border-emerald-500/25 text-emerald-700 text-xs font-bold hover:bg-emerald-600/25 transition-colors">
                     Send Another
@@ -161,14 +170,14 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
                       <label className="block text-xs font-mono font-bold text-neutral-600 mb-1.5">Your Name *</label>
                       <input type="text" value={formData.name}
                         onChange={(e) => { setFormData({ ...formData, name: e.target.value }); if (errors.name) setErrors({...errors, name: ''}); }}
-                        placeholder="e.g. Alex Mercer" className={inputClass('name')} />
+                        className={inputClass('name')} />
                       {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                     </div>
                     <div>
                       <label className="block text-xs font-mono font-bold text-neutral-600 mb-1.5">Email Address *</label>
                       <input type="email" value={formData.email}
                         onChange={(e) => { setFormData({ ...formData, email: e.target.value }); if (errors.email) setErrors({...errors, email: ''}); }}
-                        placeholder="alex@company.com" className={inputClass('email')} />
+                        className={inputClass('email')} />
                       {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                     </div>
                   </div>
@@ -176,13 +185,13 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
                     <label className="block text-xs font-mono font-bold text-neutral-600 mb-1.5">Subject / Topic</label>
                     <input type="text" value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      placeholder="e.g. Full Stack Developer Role / Collaboration" className={inputClass('subject')} />
+                      className={inputClass('subject')} />
                   </div>
                   <div>
                     <label className="block text-xs font-mono font-bold text-neutral-600 mb-1.5">Message *</label>
                     <textarea rows={5} value={formData.message}
                       onChange={(e) => { setFormData({ ...formData, message: e.target.value }); if (errors.message) setErrors({...errors, message: ''}); }}
-                      placeholder="Tell me about your project, opportunity, or question..."
+                      
                       className={inputClass('message')} />
                     {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
                   </div>
@@ -194,7 +203,7 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
                     className="w-full btn-gradient py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     <Send className="size-4" />
-                    {isSubmitting ? 'Opening email...' : 'Send Message'}
+                    {isSubmitting ? 'Opening WhatsApp...' : 'Send Message'}
                   </motion.button>
                 </form>
               )}
