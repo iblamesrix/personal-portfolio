@@ -189,6 +189,12 @@
   color: #ffffff !important;
 }
 
+/* ── Brand mark ───────────────────────────────────────────────────────────── */
+.brand-mark {
+  color: #ffffff !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.18);
+}
+
 /* ── Floating orbs ────────────────────────────────────────────────────────── */
 .orb {
   position: absolute;
@@ -199,7 +205,7 @@
   opacity: 0.025;
 }
 
-/* ── Particle canvas ──────────────────────────────────────────────────────── */
+/* ── Particle canvas ───────────────────────────────────────────────────────── */
 #particle-canvas {
   position: fixed;
   top: 0; left: 0;
@@ -240,6 +246,16 @@
     transform: translateY(-3px);
   }
 
+  /* Keep project filters on one intentional horizontal row on small screens. */
+  .project-filters {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .project-filters::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Ensure no horizontal overflow on mobile */
   section {
     overflow-x: clip;
@@ -260,7 +276,7 @@
 .portfolio-shell .text-slate-300  { color: #404040 !important; }
 .portfolio-shell .text-slate-400  { color: #525252 !important; }
 
-/* Muted text — still readable (min WCAG AA on white = 4.5:1 → #767676) */
+/* Muted text — still readable (min WCAG AA on white = #767676) */
 .portfolio-shell .text-slate-500  { color: #6b7280 !important; }
 .portfolio-shell .text-slate-600  { color: #737373 !important; }
 
