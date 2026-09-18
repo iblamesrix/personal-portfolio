@@ -46,7 +46,7 @@ export const ProjectsSection: React.FC = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
                 selectedCategory === cat
-                  ? 'bg-black text-white border-black shadow-sm'
+                  ? 'project-filter-active bg-black text-white border-black shadow-sm'
                   : 'glass text-neutral-600 border-black/10 hover:border-black/22 hover:text-black'
               }`}
             >
