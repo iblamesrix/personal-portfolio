@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume, onOpenCommandPalet
           <a href="#home" className="flex items-center gap-3 group">
             <div className="relative size-10 rounded-xl overflow-hidden">
               <div className="absolute inset-0 btn-gradient opacity-90" />
-              <div className="relative flex items-center justify-center h-full font-mono font-extrabold text-white text-base">
+              <div className="brand-mark relative flex items-center justify-center h-full font-mono font-extrabold text-base">
                 SB
               </div>
             </div>
