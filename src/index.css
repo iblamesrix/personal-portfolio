@@ -240,6 +240,14 @@
   animation: float-slow 12s ease-in-out infinite;
 }
 
+/* ── Project filter contrast ──────────────────────────────────────────────── */
+/* Active filter is a dark control; keep its label white despite the global
+   portfolio text-contrast rules below. */
+.portfolio-shell .project-filter-active,
+.portfolio-shell .project-filter-active * {
+  color: #ffffff !important;
+}
+
 /* ── Mobile overrides ─────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .card-3d:hover, .tech-card:hover {
