@@ -23,7 +23,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   return (
     <AnimatePresence>
       {project && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[60] flex items-start sm:items-center justify-center p-3 pt-20 sm:p-6 sm:pt-6 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -36,7 +36,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-4xl glass-strong gradient-border rounded-2xl overflow-hidden z-10 my-8"
+            className="relative w-full max-w-4xl max-h-[calc(100vh-5.5rem)] sm:max-h-[calc(100vh-3rem)] glass-strong gradient-border rounded-2xl overflow-hidden z-10 my-0 sm:my-8 flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-black/8">
@@ -52,13 +52,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <h3 className="text-xl sm:text-2xl font-extrabold text-black tracking-tight">{project.title}</h3>
                 <p className="text-sm text-neutral-500 font-mono mt-0.5">{project.subtitle}</p>
               </div>
-              <button onClick={onClose} className="p-2 rounded-xl glass border border-black/10 hover:border-black/22 text-neutral-500 hover:text-black transition-colors shrink-0 ml-4">
+              <button onClick={onClose} aria-label="Close project case study" className="p-2.5 rounded-xl glass border border-black/10 hover:border-black/22 text-neutral-500 hover:text-black transition-colors shrink-0 ml-4">
                 <X className="size-5" />
               </button>
             </div>
 
             {/* Body */}
-            <div className="p-6 sm:p-8 space-y-7 max-h-[72vh] overflow-y-auto">
+            <div className="p-5 sm:p-8 space-y-7 flex-1 min-h-0 overflow-y-auto overscroll-contain">
 
               {/* Overview */}
               <div className="bg-black/3 p-4 rounded-xl border border-black/8">
@@ -132,8 +132,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono mb-3">Results</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {project.keyMetrics.filter(m => m.label !== 'Role').map((metric, idx) => (
-                      <div key={idx} className="glass border border-black/10 p-3 rounded-xl text-center">
-                        <div className="text-lg font-black text-black font-mono">{metric.value}</div>
+                      <div key={idx} className="glass border border-black/10 p-3 rounded-xl text-center min-w-0 overflow-hidden">
+                        <div className="text-base sm:text-lg font-black text-black font-mono break-all leading-tight">{metric.value}</div>
                         <div className="text-xs font-semibold text-neutral-500 mt-0.5">{metric.label}</div>
                       </div>
                     ))}
@@ -151,7 +151,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </div>
 
             {/* Footer */}
-            <div className="flex flex-wrap items-center justify-between gap-4 p-6 border-t border-black/8">
+            <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-6 border-t border-black/8 shrink-0 bg-white">
               <div className="text-xs text-neutral-400 font-mono">{project.title} — {project.category}</div>
               <div className="flex items-center gap-3">
                 {project.githubUrl && (
