@@ -9,6 +9,7 @@ export const PERSONAL_INFO = {
   phone: "+91 6380764806",
   email: "sri262085@gmail.com",
   github: "https://github.com/iblamesrix",
+  linkedin: "https://www.linkedin.com/in/iblamesrix",
   resumeUrl: "/assets/Resume.pdf",
   profileImage: "/assets/profile-optimized.jpg",
   availability: "Available for Full Stack Developer Roles",
