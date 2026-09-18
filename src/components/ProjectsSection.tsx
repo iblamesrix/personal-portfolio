@@ -37,14 +37,14 @@ export const ProjectsSection: React.FC = () => {
         </motion.div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="project-filters flex flex-nowrap items-center justify-start sm:flex-wrap sm:justify-center gap-2 mb-12 overflow-x-auto pb-1 sm:overflow-visible sm:pb-0" role="group" aria-label="Project categories">
           {categories.map((cat) => (
             <motion.button
               key={cat}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
+              className={`shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
                 selectedCategory === cat
                   ? 'bg-black text-white border-black shadow-sm'
                   : 'glass text-neutral-600 border-black/10 hover:border-black/22 hover:text-black'
