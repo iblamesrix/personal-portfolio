@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Mail, Phone, MapPin, Github, Send, CheckCircle2, FileText, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle2, FileText, Clock } from 'lucide-react';
 
 interface ContactProps {
   onOpenResume: () => void;
@@ -138,6 +138,14 @@ export const ContactSection: React.FC<ContactProps> = ({ onOpenResume }) => {
                 <div className="flex items-center gap-3">
                   <Github className="size-4" />
                   <span className="text-xs font-mono font-bold">github.com/iblamesrix</span>
+                </div>
+              </a>
+
+              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 rounded-xl bg-[#0A66C2] text-white hover:opacity-90 transition-all">
+                <div className="flex items-center gap-3">
+                  <Linkedin className="size-4" />
+                  <span className="text-xs font-mono font-bold">linkedin.com/in/iblamesrix</span>
                 </div>
               </a>
             </div>
