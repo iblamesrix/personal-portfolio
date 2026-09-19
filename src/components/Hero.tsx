@@ -17,9 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       <div className="orb w-80 h-80 bg-cyan-500 bottom-0 right-1/4 animate-float-slow" />
       <div className="orb w-64 h-64 bg-blue-600 top-1/2 left-0 animate-float" style={{ animationDelay: '2s' }} />
 
-      {/* Grid background */}
-      <div className="absolute inset-0 bg-grid opacity-100 pointer-events-none" />
-      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+      {/* Plain white background — keep the portfolio visually consistent on mobile and desktop. */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
