@@ -99,7 +99,7 @@ export const ProjectsSection: React.FC = () => {
                       {project.keyMetrics.filter(m => m.label !== 'Role').slice(0, 2).map((m, i) => (
                         <div key={i} className="bg-black/3 p-3 rounded-2xl border border-black/6 min-w-0 overflow-hidden">
                           <div className="text-[11px] text-neutral-400 font-mono">{m.label}</div>
-                          <div className="text-sm font-extrabold text-black font-mono mt-0.5 break-all whitespace-normal leading-tight">{m.value}</div>
+                          <div className="text-xs sm:text-sm font-extrabold text-black font-mono mt-0.5 whitespace-nowrap leading-tight tracking-tight">{m.value}</div>
                         </div>
                       ))}
                     </div>
