@@ -66,7 +66,7 @@ export const ProjectsSection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className={`card-3d glass gradient-border rounded-3xl p-6 sm:p-8 flex flex-col justify-between group ${
+                className={`card-3d glass gradient-border rounded-3xl p-6 sm:p-8 flex flex-col justify-between group min-w-0 overflow-hidden ${
                   project.id === 'hype-house-events' ? 'border-black/20 shadow-sm' : ''
                 }`}
               >
@@ -97,9 +97,9 @@ export const ProjectsSection: React.FC = () => {
                   {project.keyMetrics.filter(m => m.label !== 'Role').length > 0 && (
                     <div className="grid grid-cols-2 gap-2.5 mb-5">
                       {project.keyMetrics.filter(m => m.label !== 'Role').slice(0, 2).map((m, i) => (
-                        <div key={i} className="bg-black/3 p-3 rounded-2xl border border-black/6">
+                        <div key={i} className="bg-black/3 p-3 rounded-2xl border border-black/6 min-w-0 overflow-hidden">
                           <div className="text-[11px] text-neutral-400 font-mono">{m.label}</div>
-                          <div className="text-sm font-extrabold text-black font-mono mt-0.5">{m.value}</div>
+                          <div className="text-sm font-extrabold text-black font-mono mt-0.5 break-all whitespace-normal leading-tight">{m.value}</div>
                         </div>
                       ))}
                     </div>
