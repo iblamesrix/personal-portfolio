@@ -248,6 +248,14 @@
   color: #ffffff !important;
 }
 
+/* ── Project filter active-state contrast ──────────────────────────────────── */
+/* Must come after the global contrast rules so the selected pill remains
+   white text on its black background. */
+.portfolio-shell .project-filter-active,
+.portfolio-shell .project-filter-active * {
+  color: #ffffff !important;
+}
+
 /* ── Mobile overrides ─────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .card-3d:hover, .tech-card:hover {
