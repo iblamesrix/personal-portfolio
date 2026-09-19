@@ -133,7 +133,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {project.keyMetrics.filter(m => m.label !== 'Role').map((metric, idx) => (
                       <div key={idx} className="glass border border-black/10 p-3 rounded-xl text-center min-w-0 overflow-hidden">
-                        <div className="text-base sm:text-lg font-black text-black font-mono break-all leading-tight">{metric.value}</div>
+                        <div className="text-[15px] sm:text-lg font-black text-black font-mono whitespace-nowrap leading-tight">{metric.value}</div>
                         <div className="text-xs font-semibold text-neutral-500 mt-0.5">{metric.label}</div>
                       </div>
                     ))}
