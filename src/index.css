@@ -357,3 +357,8 @@
 /* Code blocks inside modal */
 .portfolio-shell .glass-strong .bg-gray-950 { background-color: #0f0f0f !important; }
 .portfolio-shell .glass-strong .bg-gray-950 * { color: #d4d4d4 !important; }
+/* Active project filter must win over the global .text-white contrast shim. */
+.portfolio-shell .project-filters .project-filter-active,
+.portfolio-shell .project-filters .project-filter-active * {
+  color: #ffffff !important;
+}
